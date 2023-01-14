@@ -4,7 +4,7 @@ const inputForm = document.querySelector(".feedback-form");
 const inputEmail = document.querySelector(".feedback-form input[name=email]");
 const inputMessage = document.querySelector(".feedback-form textarea[name=message]");
 
-const userData = {};
+let userData = {};
 
 try {
     if (localStorage.getItem("feedback-form-state")?.includes("email")) {
@@ -30,6 +30,7 @@ function changeInput(e) {
 }
 function onFormSubmit(e) {
     e.preventDefault();
+    
     console.log({
         email: inputEmail.value,
         message: inputMessage.value,
@@ -37,6 +38,7 @@ function onFormSubmit(e) {
 
     e.target.reset();
     localStorage.removeItem("feedback-form-state");
+    userData = {};
 }
 inputForm.addEventListener('input', throttle(changeInput, 500));
 inputForm.addEventListener('submit', onFormSubmit);
