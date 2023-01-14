@@ -30,8 +30,8 @@ function changeInput(e) {
 }
 function onFormSubmit(e) {
     e.preventDefault();
-    
-    console.log({
+    if (inputMessage.value !== '') {
+         console.log({
         email: inputEmail.value,
         message: inputMessage.value,
     });
@@ -39,6 +39,10 @@ function onFormSubmit(e) {
     e.target.reset();
     localStorage.removeItem("feedback-form-state");
     userData = {};
+    } else {
+        console.log("Заповніть поле 'Message'")
+    }
+   
 }
 inputForm.addEventListener('input', throttle(changeInput, 500));
 inputForm.addEventListener('submit', onFormSubmit);
