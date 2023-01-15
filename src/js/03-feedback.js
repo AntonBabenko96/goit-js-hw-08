@@ -30,7 +30,7 @@ function changeInput(e) {
 }
 function onFormSubmit(e) {
     e.preventDefault();
-    if (inputMessage.value !== '') {
+    if (inputMessage.value !== '' && inputEmail.value !== '') {
          console.log({
         email: inputEmail.value,
         message: inputMessage.value,
@@ -40,7 +40,7 @@ function onFormSubmit(e) {
     localStorage.removeItem("feedback-form-state");
     userData = {};
     } else {
-        console.log("Заповніть поле 'Message'")
+        alert("Заповніть пусті поля")
     }
    
 }
